@@ -1,7 +1,14 @@
 import tkinter as tk
 
 width = int(input("What is the width?: "))
+if(width < 100):
+    print("to small, has to be at least 100")
+    exit()
 height = int(input("What is the height?: "))
+if (height < 100):
+    print("to small, has to be at least 100")
+    exit()
+
 boardsize = 8
 squaresize = width // boardsize
 
