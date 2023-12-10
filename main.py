@@ -1,33 +1,33 @@
 import tkinter as tk
 
-breite = int(input("Wie breit ist das Schachbrett?: "))
-hoehe = int(input("Wie lang ist das Schachbrett?: "))
-brettgroeße = 8
-feldgroeße = breite // brettgroeße
+width = int(input("What is the width?: "))
+height = int(input("What is the height?: "))
+boardsize = 8
+squaresize = width // boardsize
 
 
-fenster = tk.Tk()
-fenster.title("Schachbrett")
+window = tk.Tk()
+window.title("Schachbrett")
 
-canvas = tk.Canvas(fenster, width=breite, height=hoehe)
+canvas = tk.Canvas(window, width=width, height=height)
 canvas.pack()
 
 def draw_board():
     colors = ["white","black"]
-    for reihe in range(brettgroeße):
-        for spalte in range(brettgroeße):
-            x = spalte * feldgroeße
-            y = reihe * feldgroeße
-            x2 = x + feldgroeße
-            y2 = y + feldgroeße
-            color = colors[(reihe + spalte) % 2]
+    for row in range(boardsize):
+        for columnn in range(boardsize):
+            x = columnn * squaresize
+            y = row * squaresize
+            x2 = x + squaresize
+            y2 = y + squaresize
+            color = colors[(row + columnn) % 2]
             canvas.create_rectangle(x, y, x2, y2, fill=color)
 
 
-def starte_spiel():
+def start():
     draw_board()
-    fenster.mainloop()
+    window.mainloop()
 
-starte_spiel()
+start()
 
 
