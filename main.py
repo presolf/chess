@@ -2,10 +2,13 @@ import pygame
 
 pygame.init()
 
-width = 800
+width = 600
 height = 800
 
 window = pygame.display.set_mode([width,height])
+
+
+
 timer = pygame.time.Clock()
 fps = 30
 
@@ -19,7 +22,6 @@ black_pieces = ['rook', 'knight', 'bishop', 'king', 'queen', 'bishop', 'knight',
                 'pawn', 'pawn', 'pawn', 'pawn', 'pawn', 'pawn', 'pawn', 'pawn']
 black_locations = [(0, 7), (1, 7), (2, 7), (3, 7), (4, 7), (5, 7), (6, 7), (7, 7),
                    (0, 6), (1, 6), (2, 6), (3, 6), (4, 6), (5, 6), (6, 6), (7, 6)]
-
 
 #loading pieces
 
@@ -48,6 +50,19 @@ white_knight = pygame.transform.scale(white_knight, (60, 60))
 white_pawn = pygame.image.load('image_pieces/white pawn.png')
 white_pawn = pygame.transform.scale(white_pawn, (60, 60))
 
+piece_list = ['pawn', 'queen', 'king', 'knight', 'rook', 'bishop']  #to make sure the index and the image are
+                                                                    # in the same spot
+
+def drawing_board():
+     for i in range(32):
+        column = i % 4
+        row = i // 4
+        if row % 2 == 0:
+            pygame.draw.rect(window, 'white', [width-(column * 200), row * 100, 100, 100])
+        else:
+            pygame.draw.rect(window, 'white', [width + 100 - (column * 200), row * 100, 100, 100])
+
+
 
 
 #gameloop
@@ -55,7 +70,7 @@ white_pawn = pygame.transform.scale(white_pawn, (60, 60))
 running = True
 while running:
      timer.tick(fps)
-     window.fill("white")
+     window.fill("black")
 
      for event in pygame.event.get():           #checking if program was quit
          if event.type == pygame.QUIT:
