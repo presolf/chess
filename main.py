@@ -2,13 +2,10 @@ import pygame
 
 pygame.init()
 
-width = 600
+width = 800
 height = 800
 
-window = pygame.display.set_mode([width,height])
-
-
-
+window = pygame.display.set_mode([width, height])
 timer = pygame.time.Clock()
 fps = 30
 
@@ -54,15 +51,13 @@ piece_list = ['pawn', 'queen', 'king', 'knight', 'rook', 'bishop']  #to make sur
                                                                     # in the same spot
 
 def drawing_board():
-     for i in range(32):
+    for i in range(32):
         column = i % 4
         row = i // 4
         if row % 2 == 0:
-            pygame.draw.rect(window, 'white', [width-(column * 200), row * 100, 100, 100])
+            pygame.draw.rect(window, 'white', [600 - (column * 200), row * 100, 100, 100])
         else:
-            pygame.draw.rect(window, 'white', [width + 100 - (column * 200), row * 100, 100, 100])
-
-
+            pygame.draw.rect(window, 'white', [(600 + 100) - (column * 200), row * 100, 100, 100])
 
 
 #gameloop
@@ -71,6 +66,7 @@ running = True
 while running:
      timer.tick(fps)
      window.fill("black")
+     drawing_board()
 
      for event in pygame.event.get():           #checking if program was quit
          if event.type == pygame.QUIT:
