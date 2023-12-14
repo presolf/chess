@@ -68,9 +68,17 @@ def draw_pieces():
         for i in range(len(white_pieces)):
             index = piece_list.index(white_pieces[i])
             if white_pieces[i] == 'pawn':
-                window.blit(white_pawn, (white_locations[i][0] * 100, white_locations[i][1] * 100))
+                window.blit(white_pawn, (white_locations[i][0] * 100 + 20, white_locations[i][1] * 100 + 20))
             else:
-                window.blit(white_images[index], (white_locations[i][0] * 100 + 10, white_locations[i][1] * 100 + 10))
+                window.blit(white_images[index], (white_locations[i][0] * 100 + 20, white_locations[i][1] * 100 + 20))
+
+        for i in range(len(black_pieces)):
+            index = piece_list.index(black_pieces[i])
+            if black_pieces[i] == 'pawn':
+                window.blit(black_pawn, (black_locations[i][0] * 100 + 20, black_locations[i][1] * 100 + 20))
+            else:
+                window.blit(black_images[index], (black_locations[i][0] * 100 + 20, black_locations[i][1] * 100 + 20))
+
 
 
 
@@ -81,6 +89,7 @@ while running:
      timer.tick(fps)
      window.fill("dark grey")
      drawing_board()
+     draw_pieces()
 
      for event in pygame.event.get():           #checking if program was quit
          if event.type == pygame.QUIT:
